@@ -1,3 +1,4 @@
+import ContactForm from "../components/contacto/ContactForm";
 import Footer from '../components/ui/Footer';
 import React from 'react'
 
@@ -11,7 +12,7 @@ function Contacto() {
             Contacto
         </h1>
         <hr/>
-        <p>Página de contacto</p>
+        <ContactForm/>
     </main>
     
     </>

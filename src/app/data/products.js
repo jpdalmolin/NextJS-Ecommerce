@@ -1,6 +1,6 @@
 export const mockData=[
     {
-        title:"TV 50",
+        title:"TV  50",
         description:" tele samsung ",
         price:2000,
         stock:5,
