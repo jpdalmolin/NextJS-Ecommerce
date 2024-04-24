@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where } from "firebase/firestore"
 
 import { NextResponse } from "next/server"
-import {db} from "@/firebase/config"
+import {db} from "@/src/app/data/config"
 
 export async function GET(_, { params }) {
     const { categoria } = params

@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore"
 
 import { NextResponse } from "next/server"
-import { db } from "@/firebase/config"
+import { db } from "@/src/app/data/config"
 
 export async function GET(_, { params }) {
     const { slug } = params

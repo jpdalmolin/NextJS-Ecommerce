@@ -1,10 +1,11 @@
-import GoBack from "@/app/components/ui/GoBack"
+import GoBack from "../ui/GoBack";
 import Image from "next/image"
 import QtySelector from "./QtySelector"
-import { mockData } from "@/app/data/products"
 
-const ProductDetail = ({ slug }) => {
-    const item = mockData.find(p => p.slug === slug)
+const ProductDetail = async ({ slug }) => {
+    const item = await fetch(`http://localhost:3000/api/product/${slug}`, {
+        cache: "no-store",
+      }).then((res) => res.json());
 
     return (
         <div className="max-w-4xl m-auto">
