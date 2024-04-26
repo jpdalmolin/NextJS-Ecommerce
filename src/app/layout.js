@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { CartProvider } from "./components/context/CartContext";
 import Footer from "@/app/components/ui/Footer"
 import Header from "@/app/components/ui/Header"
 
@@ -12,9 +13,11 @@ export default function RootLayout({ children }) {
   return (
      <html lang="en">
        <body>
+        <CartProvider>
          <Header/>
          {children}
          <Footer/>
+        </CartProvider>
        </body>
      </html>
    )
