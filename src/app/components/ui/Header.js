@@ -1,5 +1,6 @@
 'use client'
 
+import CartWidget from './CartWidget'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -23,6 +24,10 @@ const links=[
     {
         label:"Contacto",
         href:"/contacto"
+    },
+    {
+        label:"Carrito",
+        href:"/carrito"
     },
     {
         label:"Admin",
@@ -56,6 +61,7 @@ const Header = () => {
                     </Link>
             })
            }
+           <CartWidget/>
         </nav>
     </div>
        

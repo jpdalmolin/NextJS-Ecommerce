@@ -2,7 +2,7 @@ import "./globals.css";
 
 import { CartProvider } from "./components/context/CartContext";
 import Footer from "@/app/components/ui/Footer"
-import Header from "@/app/components/ui/Header"
+import Header from "./components/ui/Header";
 
 export const metadata=  {
   title: "Create Next App",
