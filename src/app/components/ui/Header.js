@@ -25,10 +25,7 @@ const links=[
         label:"Contacto",
         href:"/contacto"
     },
-    {
-        label:"Carrito",
-        href:"/carrito"
-    },
+  
     {
         label:"Admin",
         href:"/admin"

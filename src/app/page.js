@@ -15,13 +15,13 @@ export default function Home() {
    <main className="container m-auto">
     <h1 className="text-4xl text-blue-600 text-bold my-4">Next JS</h1>
     <hr />
-    <p className="text-base mt-4" >Bienvenidos a Mi pagina</p>
+    <p className="text-base mt-4" >Bienvenidos a TechnoStore en Next JS</p>
     <Counter/>
     <Image 
-    src={"https://img.freepik.com/foto-gratis/colores-arremolinados-interactuan-danza-fluida-sobre-lienzo-que-muestra-tonos-vibrantes-patrones-dinamicos-que-capturan-caos-belleza-arte-abstracto_157027-2892.jpg?w=996&t=st=1711920834~exp=1711921434~hmac=b4306954206cd2e6957c75d4087e1590ad1a36d50bcd7a632f0ac5a1c51f5b90"}
+    src={"https://newcyprusguide.com/wp-content/uploads/2018/06/north-cyprus-guide-pearl-techno-19-1200x800.jpg"}
     alt="cadete espacio"
-    width={300}
-    height={300}
+    width={3000}
+    height={1000}
     />
     
    </main>

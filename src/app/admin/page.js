@@ -1,9 +1,15 @@
-import React from 'react'
+import LogoutButton from "@/src/app/components/admin/LogoutButton"
+import ProductsTable from "@/src/app/components/admin/ProductsTable"
 
-function admin() {
-  return (
-    <div>Sitio en construccion</div>
-  )
+const Admin = () => {
+
+    return (
+        <div className="container m-auto mt-6">
+            <LogoutButton />
+            <h2 className="text-2xl my-10 border-b pb-4">Panel Administración</h2>
+            <ProductsTable />
+        </div>
+    )
 }
 
-export default admin
+export default Admin

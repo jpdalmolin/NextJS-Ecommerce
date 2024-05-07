@@ -29,7 +29,22 @@ const nextConfig = {
                 port: '',
                 pathname:'/**',
 
+            },
+            {
+                protocol: 'https',
+                hostname: 'firebasestorage.googleapis.com',
+                port: '',
+                pathname:'/**',
+
+            },
+            {
+                protocol: 'https',
+                hostname: 'newcyprusguide.com',
+                port: '',
+                pathname:'/**',
+
             }
+            
         ]
     }
 };
