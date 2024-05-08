@@ -1,53 +1,68 @@
-"use client"
+// context/AuthContext.jsx
+"use client";
 
-import { auth, db, provider } from "@/src/app/data/config"
-import { createContext, useContext, useEffect, useState } from "react"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
-import { doc, getDoc } from "firebase/firestore"
+import {
+  authFirebase,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = createContext()
+import { auth } from "@/src/app/data/config";
 
-export const useAuthContext = () => useContext(AuthContext)
+export const AuthContext = createContext();
+export const useAuthContext = () => useContext(AuthContext);
 
-export const AuthProvider = ({children}) => {
-  const [user, setUser] = useState({
-      logged: false,
-      emaiL: null,
-      uid: null
-  })
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-const registerUser = async (values) => {
-        const userCredential=await createUserWithEmailAndPassword(auth, values.email, values.password)
-        console.log(userCredential)
-        const user=userCredential.user
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
         setUser({
-          logged:true,
-          email:user.email,
-          user:user.uid
-        })
+          email: user.email,
+        });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+      console.log("User: ", user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const registerUser = async (values) => {
+    await createUserWithEmailAndPassword(auth, values.email, values.password)
 }
 
-const loginUser = async (values) => {
-await signInWithEmailAndPassword(auth, values.email, values.password)
-    
-}
+  const logIn = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Verificar si el usuario está autenticado
+      const user = auth.currentUser;
+      if (user) {
+        // Redirigir a /admin si el usuario está autenticado
+        window.location.href = "/admin";
+      } else {
+        console.log("Error de autenticación");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
-const logout = async () => {
-await signOut(auth)
-}
+  const logout = async () => {
+    setUser(null);
+    return await signOut(auth);
+  }
 
-
-  
-      
-    return (
-        <AuthContext.Provider value={{
-            user,
-            registerUser,
-            loginUser,
-            logout,
-           
-        }}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
+  return (
+    <AuthContext.Provider value={{ user, loading, registerUser, logIn, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
