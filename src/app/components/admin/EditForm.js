@@ -11,7 +11,7 @@ const updateProduct = async (slug, values, file) => {
     let fileURL = values.image
 
     if (file) {
-        const storageRef = ref(storage, values.slug)
+        const storageRef = ref(storage, "imagen")
         const fileSnapshot = await uploadBytes(storageRef, file)
         fileURL = await getDownloadURL(fileSnapshot.ref)
     }
